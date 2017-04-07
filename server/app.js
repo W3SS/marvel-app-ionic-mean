@@ -1,29 +1,25 @@
-var express = require('express');
-var path = require('path');
-var favicon = require('serve-favicon');
-var logger = require('morgan');
-var cookieParser = require('cookie-parser');
-var bodyParser = require('body-parser');
+const express = require('express');
+  path = require('path'),    
+  bodyParser = require('body-parser'),
+  dotenv = require('dotenv'),
+  app = express();
 
 var index = require('./routes/index');
-var users = require('./routes/users');
 
-var app = express();
+// process env file
+dotenv.load();
 
-// view engine setup
-app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'pug');
-
-// uncomment after placing your favicon in /public
-//app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
-app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
-app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+console.log("---- " + process.env.ENV_DATABASE_NAME);
+
+// connect to mongo
+require('./mongo/connect')(process.env.ENV_DATABASE_HOST,process.env.ENV_DATABSE_NAME,process.env.ENV_DATABSE_SECRET);
+
 app.use('/', index);
-app.use('/users', users);
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
