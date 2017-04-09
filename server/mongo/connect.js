@@ -1,19 +1,19 @@
-module.exports = function (host,database,secret) {
+module.exports = function ( ) {
     const config = require('../configs/database'),
-        mongoose = require('mongoose');
+        mongoose = require('mongoose'),
+        debug = require('debug')('marvel:'+ require('path').basename(__filename));
     
-    console.log("connecting : " + host + " " + database);
+    debug("connecting : " + config.database + " " + config.secret);
     // Connect To Database
-    mongoose.connect(config.database);
-    
+    mongoose.connect(config.database);    
     // On Connection
     mongoose.connection.on('connected', () => {
-        console.log('Connected to database ' + config.database);
+        debug('Connected to database ' + config.database);
     });
 
     // On Error
     mongoose.connection.on('error', (err) => {
-        console.log('Database error: ' + err);
+        debug('Database error: ' + err);
     });
 
 

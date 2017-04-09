@@ -1,24 +1,27 @@
-const express = require('express');
-  path = require('path'),    
+const express = require('express'),
+  path = require('path'),  
+  cookieParser = require('cookie-parser'),
   bodyParser = require('body-parser'),
-  dotenv = require('dotenv'),
   app = express();
 
-var index = require('./routes/index');
+// start env 
+require('dotenv').config();
 
-// process env file
-dotenv.load();
+// view engine setup
+app.set('views', path.join(__dirname, 'views'));
+app.set('view engine', 'pug');
 
+// uncomment after placing your favicon in /public
+//app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
+app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-console.log("---- " + process.env.ENV_DATABASE_NAME);
+require('./mongo/connect')();
 
-// connect to mongo
-require('./mongo/connect')(process.env.ENV_DATABASE_HOST,process.env.ENV_DATABSE_NAME,process.env.ENV_DATABSE_SECRET);
-
-app.use('/', index);
+app.use('/', require('./routes/index'));
+app.use('/hero', require('./hero/index'));
 
 
 // catch 404 and forward to error handler
