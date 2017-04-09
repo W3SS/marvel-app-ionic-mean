@@ -16,9 +16,8 @@
 <ion-content padding>
 
   <ion-list>
+ 
     <ion-item *ngFor="let item of items" (click)="viewItem(item)">
-
-
 
       <ion-thumbnail item-left>
         <img [src]="'assets/heroes/'+item.image">
@@ -34,44 +33,6 @@
         <ion-badge item-right>{{item.basestats.power}}</ion-badge>
 
       </p>
-      <!--<button ion-button clear item-right (click)="viewItem(item)">View</button>-->
-
-       <!--<ion-grid>
-        <ion-row>
-          <h1> {{item.heroname}}</h1>
-        </ion-row>
-
-        <ion-row>
-          <ion-thumbnail *ngIf="item.image" item-left>
-            <img src="assets/heroes/{{item.image}}">
-               
-          </ion-thumbnail>
-          <ion-row class="text-wrap"> 
-            {{item.description}}
-          </ion-row> 
-        </ion-row>
-        <ion-row>
-          <ion-col col-6>
-            <ion-icon name="heart" item-left></ion-icon>
-            Health
-            <ion-badge item-right>{{item.basestats.health}}</ion-badge>
-          </ion-col>
-          <ion-col col-6>
-            <ion-icon name="pulse" item-left></ion-icon>
-            Power
-            <ion-badge item-right>{{item.basestats.power}}</ion-badge>
-          </ion-col>
-        </ion-row>
-        <ion-row>
-          <button ion-button clear item-right (click)="viewItem(item)">View</button>
-        </ion-row>
-      </ion-grid>-->
-
-
-
-
-
-
     </ion-item>
   </ion-list>
 </ion-content>

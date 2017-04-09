@@ -35,7 +35,8 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     AboutPage,
     AdminPage,
     HomePage,
-    TabsPage
+    TabsPage,
+    DetailsPage
   ],
   providers: [
      StatusBar,

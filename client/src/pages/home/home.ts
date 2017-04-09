@@ -3,7 +3,7 @@ import { NavController } from 'ionic-angular';
 import {DetailsPage} from '../details/details';
 import {HeroProvider} from '../../providers/hero';
 import {IHeroResponse,IHero} from '../../providers/ihero';
-
+import {ArrayUtils} from '../../utils/array.utils';
 
 @Component({
   selector: 'page-home',
@@ -31,7 +31,9 @@ export class HomePage implements OnInit {
     this.heroService.getHeroes().
       subscribe((resp:IHeroResponse) => {
         console.log('--', resp)
-        this.items = resp.data as IHero[];
+        let _items:IHero[] = resp.data as IHero[];
+        ArrayUtils.sort(_items,'herocode','abc');
+        this.items = _items;
       })
   } 
 

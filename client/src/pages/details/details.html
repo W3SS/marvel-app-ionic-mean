@@ -8,7 +8,7 @@
 
   <ion-navbar>
     <ion-title>{{item.heroname}} </ion-title>
-    
+
   </ion-navbar>
 
 </ion-header>
@@ -23,33 +23,37 @@
     </ion-card-header>
 
     <ion-card-content>
-      <img src="">
+      <img [src]="'assets/heroes/'+item.image">
       <ion-list>
         <ion-item>
-          <ion-icon name="person" item-left></ion-icon>
+          <ion-icon name="star-outline" item-left></ion-icon>
 
           <ion-note item-right>{{item.realname}}</ion-note>
           <ion-note item-right>{{item.team}}</ion-note>
 
         </ion-item>
         <ion-item>
-          <ion-icon name="thumbs-up" item-left></ion-icon>
-          Base Stats:
-          <ion-note item-right>
-              
-          </ion-note>
+          <ion-icon name="heart" item-left></ion-icon>
+          Health
+          <ion-badge item-right>{{item.basestats.health}}</ion-badge>
+
         </ion-item>
- 
-         <ion-item>
-          <ion-icon name="thumbs-up" item-left></ion-icon>
-          Power Stats:
-          <ion-note item-right>
-              
-          </ion-note>
+
+        <ion-item>
+          <ion-icon name="pulse" item-left></ion-icon>
+          Power
+          <ion-badge item-right>{{item.basestats.power}}</ion-badge>
+
         </ion-item>
-        
+
+        <ion-item>
+          <p class="text-wrap">
+            {{item.description}}
+          </p>
+        </ion-item>
+
       </ion-list>
-    
+
     </ion-card-content>
 
 
