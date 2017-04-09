@@ -1,0 +1,58 @@
+<!--
+  Generated template for the Details page.
+
+  See http://ionicframework.com/docs/v2/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>{{item.heroname}} </ion-title>
+    
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+  <ion-card>
+    <ion-card-header>
+      <ion-icon name="planet" item-left></ion-icon> {{item.heroname}}
+      <ion-badge item-right>{{item.herocode}}</ion-badge>
+    </ion-card-header>
+
+    <ion-card-content>
+      <img src="">
+      <ion-list>
+        <ion-item>
+          <ion-icon name="person" item-left></ion-icon>
+
+          <ion-note item-right>{{item.realname}}</ion-note>
+          <ion-note item-right>{{item.team}}</ion-note>
+
+        </ion-item>
+        <ion-item>
+          <ion-icon name="thumbs-up" item-left></ion-icon>
+          Base Stats:
+          <ion-note item-right>
+              
+          </ion-note>
+        </ion-item>
+ 
+         <ion-item>
+          <ion-icon name="thumbs-up" item-left></ion-icon>
+          Power Stats:
+          <ion-note item-right>
+              
+          </ion-note>
+        </ion-item>
+        
+      </ion-list>
+    
+    </ion-card-content>
+
+
+  </ion-card>
+
+</ion-content>

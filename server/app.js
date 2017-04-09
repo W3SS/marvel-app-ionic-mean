@@ -2,10 +2,19 @@ const express = require('express'),
   path = require('path'),  
   cookieParser = require('cookie-parser'),
   bodyParser = require('body-parser'),
+  cors = require('cors');
   app = express();
+
 
 // start env 
 require('dotenv').config();
+
+
+// CORS Middleware
+app.use(cors());
+
+// start 
+require('./mongo/connect')();
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -18,7 +27,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-require('./mongo/connect')();
+
 
 app.use('/', require('./routes/index'));
 app.use('/hero', require('./hero/index'));

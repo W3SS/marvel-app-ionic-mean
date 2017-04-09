@@ -10,6 +10,8 @@ const TableConstants = {
   FIELD_HERO_CODE: "herocode",
   FIELD_TYPE: "type",
   FIELD_TEAM: "team",
+  FIELD_IMAGE: "image",
+  FIELD_DESC: "description",
   FIELD_BASE_STATS: "basestats",
   FIELD_SUB_STATS: "substats"
 }
@@ -19,6 +21,12 @@ const TableSchema = mongoose.Schema({
     type: String
   },
   team: {
+    type: Object
+  },
+  image: {
+    type: String
+  },
+  description: {
     type: Object
   },
   herocode: {
@@ -117,6 +125,8 @@ const Hero = function (value) {
     this.team = value.team || [];
     this.herocode = value.herocode || '';
     this.heroname = value.heroname || '';
+    this.image = value.image || '';
+    this.description = value.image || '';
     this.type = value.type || '';
     this.basestats = new BaseStats(value.basestats);
     this.substats = new SubStats(value.substats);
