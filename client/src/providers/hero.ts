@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import {Http } from '@angular/http';
 import {Observable} from "rxjs";
-import {IHeroResponse} from './ihero';
+import {IHeroResponse,IHero} from './ihero';
 /*
   Generated class for the Hero provider.
 
@@ -17,6 +17,13 @@ export class HeroProvider {
     console.log('Hello Hero Provider');
   }
 
+  createHero(data:IHero):Observable<IHeroResponse>{
+    
+    return this.http.post(this.url,data)
+            .map(res=>{
+            return res.json();
+        }).catch(this.throwServiceError);;
+  }
 
   getHeroes():Observable<IHeroResponse>{
     return this.http.get(this.url)

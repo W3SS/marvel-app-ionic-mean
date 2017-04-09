@@ -1,17 +1,126 @@
 <ion-header>
   <ion-navbar>
     <ion-title>
-      Contact
+      Admin
     </ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content>
-  <ion-list>
-    <ion-list-header>Follow us on Twitter</ion-list-header>
-    <ion-item>
-      <ion-icon name="ionic" item-left></ion-icon>
-      @ionicframework
-    </ion-item>
-  </ion-list>
+  <form (submit)="createHero($event)">
+    <ion-item-group>
+      <ion-item-divider color="light">Details</ion-item-divider>
+      <ion-item>
+        <ion-label fixed>Hero Name</ion-label>
+        <ion-input type="text" placeholder=" " [(ngModel)]="formData.heroname" name="heroname"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label fixed>Real Name</ion-label>
+        <ion-input type="text" placeholder=" " [(ngModel)]="formData.realname" name="realname"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label fixed>Hero Code</ion-label>
+        <ion-input type="text" [(ngModel)]="formData.herocode" placeholder=" " name="herocode"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label fixed>Type</ion-label>
+        <ion-select [(ngModel)]="formData.type" name="type">
+          <ion-option value="hero">Hero</ion-option>
+          <ion-option value="villain">Villain</ion-option>
+          <ion-option value="neutral">Neutral</ion-option>
+
+        </ion-select>
+      </ion-item>
+      <ion-item>
+        <ion-label fixed>Team</ion-label>
+        <ion-input type="text" [(ngModel)]="formData.team" placeholder=" " name="team"></ion-input>
+      </ion-item>
+    </ion-item-group>
+
+
+    <ion-item-group>
+      <ion-item-divider color="light">Base Stats</ion-item-divider>
+      <ion-item>
+
+        <ion-range [(ngModel)]="formData.basestats.health" name="health">
+          <ion-label range-left>Health</ion-label>
+          <ion-icon range-left name="remove-circle"></ion-icon>
+          <ion-icon range-right name="add-circle"></ion-icon>
+          <ion-label range-right>{{formData.basestats.health}}</ion-label>
+        </ion-range>
+      </ion-item>
+
+      <ion-item>
+        <ion-range [(ngModel)]="formData.basestats.power" name="power">
+          <ion-label range-left>Power</ion-label>
+          <ion-icon range-left name="remove-circle"></ion-icon>
+          <ion-icon range-right name="add-circle"></ion-icon>
+          <ion-label range-right>{{formData.basestats.power}}</ion-label>
+        </ion-range>
+      </ion-item>
+
+    </ion-item-group>
+
+
+
+    <ion-item-group>
+      <ion-item-divider color="light">Skill Stats</ion-item-divider>
+      <ion-item>
+        <ion-range [(ngModel)]="formData.substats.strength" name="strength">
+          <ion-label range-left>Strength</ion-label>
+          <ion-icon range-left name="remove-circle"></ion-icon>
+          <ion-icon range-right name="add-circle"></ion-icon>
+          <ion-label range-right>{{formData.substats.strength}}</ion-label>
+        </ion-range>
+      </ion-item>
+
+      <ion-item>
+        <ion-range [(ngModel)]="formData.substats.speed" name="speed">
+          <ion-label range-left>Speed</ion-label>>
+          <ion-icon range-left name="remove-circle"></ion-icon>
+          <ion-icon range-right name="add-circle"></ion-icon>
+          <ion-label range-right>{{formData.substats.speed}}</ion-label>
+        </ion-range>
+      </ion-item>
+
+      <ion-item>
+        <ion-range [(ngModel)]="formData.substats.stamina" name="stamina">
+          <ion-label range-left>Stamina</ion-label>
+          <ion-icon range-left name="remove-circle"></ion-icon>
+          <ion-icon range-right name="add-circle"></ion-icon>
+          <ion-label range-right>{{formData.substats.stamina}}</ion-label>
+        </ion-range>
+      </ion-item>
+
+      <ion-item>
+        <ion-range [(ngModel)]="formData.substats.agility" name="agility">
+          <ion-label range-left>Agility</ion-label>
+          <ion-icon range-left name="remove-circle"></ion-icon>
+          <ion-icon range-right name="add-circle"></ion-icon>
+          <ion-label range-right>{{formData.substats.agility}}</ion-label>
+        </ion-range>
+      </ion-item>
+
+      <ion-item>
+        <ion-range [(ngModel)]="formData.substats.intelligence" name="intelligence">
+          <ion-label range-left>Intelligence</ion-label>
+          <ion-icon range-left name="remove-circle"></ion-icon>
+          <ion-icon range-right name="add-circle"></ion-icon>
+          <ion-label range-right>{{formData.substats.intelligence}}</ion-label>
+        </ion-range>
+      </ion-item>
+
+    </ion-item-group>
+
+    <ion-item-group>
+      <ion-item-divider color="light">Other</ion-item-divider>
+      <ion-item>
+        <ion-label range-left>Description</ion-label>
+        <textarea rows="4" [(ngModel)]="formData.description" name="description"></textarea>
+      </ion-item>
+
+    </ion-item-group>
+
+    <button ion-button type="submit" block>Save Changes</button>
+  </form>
 </ion-content>
